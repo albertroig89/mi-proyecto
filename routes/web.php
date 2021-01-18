@@ -21,7 +21,8 @@ Route::get('/usuarios', function () {
         return 'Usuarios';
 });
 
-//usuarios/nuevo != usuarios/[0-9]+  EL WHERE ARA ENS DIFERENCIA ENTRE SI LI DONEM UN NUMERO O NO PERQUE SINO MAI ENS ENTRARA A LA NOVA FUNCIO 
+//usuarios/nuevo != usuarios/[0-9]+  EL WHERE ARA ENS DIFERENCIA ENTRE SI LI DONEM UN NUMERO O NO PERQUE SINO MAI ENS ENTRARA A LA NOVA FUNCIO
+//TAMBE TINDRE EN COMPTE QUE SI EN LLOC DEL WHERE CAMBIEM L'ORDRE DE LES FUNCIONS TAMBE ENS FARIA EL MATEIX
 
 Route::get('/usuarios/{id}', function($id) {
     return 'Mostrando detalle del usuario: '.$id;
@@ -34,10 +35,12 @@ Route::get('/usuarios/nuevo', function() {
 
 Route::get('/saludo/{name}/{nickname?}', function($name, $nickname = null) { //AL POSAR EL ? DESPRES DEL CAMP EL FEM OPCIONAL
     
+    $name = ucfirst($name);
+    
     if($nickname){
         return "Bienvenido {$name}, tu apodo es {$nickname}";
     } else {
-        return "Bienvenido {$name}, no tienes apodo";
+        return "Bienvenido {$name}";
     }
     
 });
