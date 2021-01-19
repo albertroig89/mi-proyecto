@@ -17,21 +17,18 @@ Route::get('/', function () {
     return 'Home';
 });
 
-Route::get('/usuarios', function () {
-        return 'Usuarios';
-});
+Route::get('/usuarios', 'UserController@index');
 
 //usuarios/nuevo != usuarios/[0-9]+  EL WHERE ARA ENS DIFERENCIA ENTRE SI LI DONEM UN NUMERO O NO PERQUE SINO MAI ENS ENTRARA A LA NOVA FUNCIO
 //TAMBE TINDRE EN COMPTE QUE SI EN LLOC DEL WHERE CAMBIEM L'ORDRE DE LES FUNCIONS TAMBE ENS FARIA EL MATEIX
 
-Route::get('/usuarios/{id}', function($id) {
-    return 'Mostrando detalle del usuario: '.$id;
+Route::get('/usuarios/{id}', 'UserController@show')
+        ->where('id', '[0-9]+');
+    //return 'Mostrando detalle del usuario: '.$id;
     /*return "Mostrando detalle del usuario: {$id}"*/ /*fa el mateix que la linea anterior en sintaxis diferent*/
-})->where('id', '[0-9]+'); //->here('id', '\d+'); ES EL MATEIX QUE LA LINEA ANTERIOR EL + SIGNIFICA QUE HI POT HABER MES D'UN NUMERO
+ //->here('id', '\d+'); ES EL MATEIX QUE LA LINEA ANTERIOR EL + SIGNIFICA QUE HI POT HABER MES D'UN NUMERO
 
-Route::get('/usuarios/nuevo', function() {
-    return 'Crear nuevo usuario';
-});
+Route::get('/usuarios/nuevo', 'UserController@create');
 
 Route::get('/saludo/{name}/{nickname?}', function($name, $nickname = null) { //AL POSAR EL ? DESPRES DEL CAMP EL FEM OPCIONAL
     
