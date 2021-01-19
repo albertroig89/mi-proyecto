@@ -24,8 +24,6 @@ Route::get('/usuarios', 'UserController@index');
 
 Route::get('/usuarios/{id}', 'UserController@show')
         ->where('id', '[0-9]+');
-    //return 'Mostrando detalle del usuario: '.$id;
-    /*return "Mostrando detalle del usuario: {$id}"*/ /*fa el mateix que la linea anterior en sintaxis diferent*/
  //->here('id', '\d+'); ES EL MATEIX QUE LA LINEA ANTERIOR EL + SIGNIFICA QUE HI POT HABER MES D'UN NUMERO
 
 Route::get('/usuarios/nuevo', 'UserController@create');
